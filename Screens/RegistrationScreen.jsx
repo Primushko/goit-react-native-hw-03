@@ -16,7 +16,7 @@ import {
 import backgroundImg from "../assets/img/background.jpg";
 import SvgAddButton from "../assets/svg/SvgAddButton";
 
-export const RegistrationScreen = () => {
+const RegistrationScreen = () => {
   const [avatar, setAvatar] = useState(null);
   const [login, setLogin] = useState("");
   const [email, setEmail] = useState("");
@@ -170,6 +170,8 @@ export const RegistrationScreen = () => {
     </TouchableWithoutFeedback>
   );
 };
+
+export default RegistrationScreen;
 
 const styles = StyleSheet.create({
   keyboardView: {

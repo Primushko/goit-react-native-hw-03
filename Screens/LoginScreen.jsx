@@ -14,7 +14,7 @@ import {
 
 import backgroundImg from "../assets/img/background.jpg";
 
-export const LoginScreen = () => {
+const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -122,6 +122,8 @@ export const LoginScreen = () => {
     </TouchableWithoutFeedback>
   );
 };
+
+export default LoginScreen;
 
 const styles = StyleSheet.create({
   keyboardView: {
