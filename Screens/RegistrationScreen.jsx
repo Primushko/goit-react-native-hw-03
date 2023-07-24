@@ -2,12 +2,12 @@ import { useState } from "react";
 import { Dimensions, StyleSheet } from "react-native";
 import * as DocumentPicker from "expo-document-picker";
 import {
+  Text,
   View,
   ImageBackground,
   Image,
   TouchableOpacity,
   TextInput,
-  Text,
   KeyboardAvoidingView,
   Platform,
   Keyboard,

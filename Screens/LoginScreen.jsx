@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Dimensions, StyleSheet } from "react-native";
 import {
+  Text,
   View,
   ImageBackground,
   TouchableOpacity,
   TextInput,
-  Text,
   KeyboardAvoidingView,
   Platform,
   Keyboard,
