@@ -1,9 +1,20 @@
 import React, { useState } from "react";
-import { Dimensions, StyleSheet } from "react-native";
+// import { Dimensions, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
+// import {
+//   Text,
+//   View,
+//   ImageBackground,
+//   TouchableOpacity,
+//   TextInput,
+//   KeyboardAvoidingView,
+//   Platform,
+//   Keyboard,
+//   TouchableWithoutFeedback,
+// } from "react-native";
 import {
   Text,
   View,
-  ImageBackground,
   TouchableOpacity,
   TextInput,
   KeyboardAvoidingView,
@@ -12,7 +23,7 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 
-import backgroundImg from "../assets/img/background.jpg";
+// import backgroundImg from "../assets/img/background.jpg";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -54,70 +65,68 @@ const LoginScreen = () => {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.keyboardView}
       >
-        <ImageBackground source={backgroundImg} style={styles.bgContainer}>
-          <View style={styles.contentWrapper}>
-            <Text style={styles.title}>Увійти</Text>
+        {/* <ImageBackground source={backgroundImg} style={styles.bgContainer}> */}
+        <View style={styles.contentWrapper}>
+          <Text style={styles.title}>Увійти</Text>
+          <TextInput
+            style={{
+              ...styles.input,
+              backgroundColor:
+                currentFocused === "email" ? "#ffffff" : "#f6f6f6",
+              borderColor: currentFocused === "email" ? "#ff6c00" : "#e8e8e8",
+            }}
+            placeholder="Адреса електронної пошти"
+            placeholderTextColor="#bdbdbd"
+            autoComplete="email"
+            autoCapitalize="none"
+            value={email}
+            onChangeText={setEmail}
+            onFocus={() => handleFocus("email")}
+          />
+          <View
+            style={{
+              ...styles.passWrapper,
+              marginBottom: isShowKeyboard ? 92 : 43,
+            }}
+          >
             <TextInput
               style={{
                 ...styles.input,
+                ...styles.inputLast,
                 backgroundColor:
-                  currentFocused === "email" ? "#ffffff" : "#f6f6f6",
-                borderColor: currentFocused === "email" ? "#ff6c00" : "#e8e8e8",
+                  currentFocused === "password" ? "#ffffff" : "#f6f6f6",
+                borderColor:
+                  currentFocused === "password" ? "#ff6c00" : "#e8e8e8",
               }}
-              placeholder="Адреса електронної пошти"
+              placeholder="Пароль"
               placeholderTextColor="#bdbdbd"
-              autoComplete="email"
+              autoComplete="password"
               autoCapitalize="none"
-              value={email}
-              onChangeText={setEmail}
-              onFocus={() => handleFocus("email")}
+              secureTextEntry={isSecureText}
+              value={password}
+              onChangeText={setPassword}
+              onFocus={() => handleFocus("password")}
             />
-            <View
-              style={{
-                ...styles.passWrapper,
-                marginBottom: isShowKeyboard ? 92 : 43,
-              }}
+            <TouchableOpacity
+              style={styles.btnPassShow}
+              onPress={() =>
+                password !== "" && setIsSecureText((prevState) => !prevState)
+              }
             >
-              <TextInput
-                style={{
-                  ...styles.input,
-                  ...styles.inputLast,
-
-                  backgroundColor:
-                    currentFocused === "password" ? "#ffffff" : "#f6f6f6",
-                  borderColor:
-                    currentFocused === "password" ? "#ff6c00" : "#e8e8e8",
-                }}
-                placeholder="Пароль"
-                placeholderTextColor="#bdbdbd"
-                autoComplete="password"
-                autoCapitalize="none"
-                secureTextEntry={isSecureText}
-                value={password}
-                onChangeText={setPassword}
-                onFocus={() => handleFocus("password")}
-              />
-              <TouchableOpacity
-                style={styles.btnPassShow}
-                onPress={() =>
-                  password !== "" && setIsSecureText((prevState) => !prevState)
-                }
-              >
-                <Text style={styles.btnPassShowText}>Показати</Text>
-              </TouchableOpacity>
-            </View>
-
-            <TouchableOpacity style={styles.btn} onPress={onSubmitUserRegister}>
-              <Text style={styles.btnText}>Увійти</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.link}>
-              <Text style={styles.linkText}>
-                Немає акаунту?{" "}
-                <Text style={styles.linkTextUnderline}>Зареєструватися</Text>
-              </Text>
+              <Text style={styles.btnPassShowText}>Показати</Text>
             </TouchableOpacity>
           </View>
-        </ImageBackground>
+          <TouchableOpacity style={styles.btn} onPress={onSubmitUserRegister}>
+            <Text style={styles.btnText}>Увійти</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.link}>
+            <Text style={styles.linkText}>
+              Немає акаунту?{" "}
+              <Text style={styles.linkTextUnderline}>Зареєструватися</Text>
+            </Text>
+          </TouchableOpacity>
+        </View>
+        {/* </ImageBackground> */}
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   );
@@ -130,18 +139,18 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  bgContainer: {
-    width: "100%",
-    height: "100%",
+  // bgContainer: {
+  //   width: "100%",
+  //   height: "100%",
 
-    flexDirection: "row",
-    alignItems: "flex-end",
+  //   flexDirection: "row",
+  //   alignItems: "flex-end",
 
-    resizeMode: "cover",
-    justifyContent: "center",
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
-  },
+  //   resizeMode: "cover",
+  //   justifyContent: "center",
+  //   width: Dimensions.get("window").width,
+  //   height: Dimensions.get("window").height,
+  // },
 
   contentWrapper: {
     paddingHorizontal: 16,
